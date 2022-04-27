@@ -8,6 +8,26 @@ class FeatureEngineering:
     You must implement __preprocessing__ method.
 
     Do any feature engineering you want and be sure to return the completed dataframe.
+    
+    Example)
+        import pandas as pd
+        from feature_engineering import FeatureEngineering
+
+        class MyFE(FeatureEngineering):
+            def __init__(self, df):
+                self.df = df
+
+            def __preprocessing__(self):
+                self.df["new_feature1"] = self.df["old_feature"] + 1
+
+                return self.df
+
+        df = pd.DataFrame(data={
+            "old_feature": [1, 2, 3]
+        })
+
+        fe = MyFE(df)
+        new_df = fe() # just object call, return the new dataframe
     """
     def __init__(self):
         self.tmp = None
